@@ -377,6 +377,10 @@ int wifi_connect_to_supplicant()
         strlcpy(ifname, iface, sizeof(ifname));
     }
 
+
+// drakaz : wait for supplicant
+    usleep(100000);
+
     ctrl_conn = wpa_ctrl_open(ifname);
     if (ctrl_conn == NULL) {
         LOGE("Unable to open connection to supplicant on \"%s\": %s",
