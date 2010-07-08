@@ -44,22 +44,22 @@ static char iface[PROPERTY_VALUE_MAX];
 // sockets is in
 
 #ifndef WIFI_DRIVER_MODULE_PATH
-#define WIFI_DRIVER_MODULE_PATH         "/system/lib/modules/wlan.ko"
+#define WIFI_DRIVER_MODULE_PATH         "/system/lib/modules/bcm4325.ko"
 #endif
 #ifndef WIFI_DRIVER_MODULE_NAME
-#define WIFI_DRIVER_MODULE_NAME         "wlan"
+#define WIFI_DRIVER_MODULE_NAME         "bcm4325"
 #endif
 #ifndef WIFI_DRIVER_MODULE_ARG
-#define WIFI_DRIVER_MODULE_ARG          ""
+#define WIFI_DRIVER_MODULE_ARG          "firmware_path=/system/etc/rtecdc.bin nvram_path=/system/etc/nvram.txt"
 #endif
 #ifndef WIFI_FIRMWARE_LOADER
 #define WIFI_FIRMWARE_LOADER		""
 #endif
-#define WIFI_TEST_INTERFACE		"sta"
+#define WIFI_TEST_INTERFACE		"eth0"
 
 #define WIFI_DRIVER_LOADER_DELAY	1000000
 
-static const char IFACE_DIR[]           = "/data/system/wpa_supplicant";
+static const char IFACE_DIR[]           = "/data/misc/wifi";
 static const char DRIVER_MODULE_NAME[]  = WIFI_DRIVER_MODULE_NAME;
 static const char DRIVER_MODULE_TAG[]   = WIFI_DRIVER_MODULE_NAME " ";
 static const char DRIVER_MODULE_PATH[]  = WIFI_DRIVER_MODULE_PATH;
@@ -69,7 +69,7 @@ static const char DRIVER_PROP_NAME[]    = "wlan.driver.status";
 static const char SUPPLICANT_NAME[]     = "wpa_supplicant";
 static const char SUPP_PROP_NAME[]      = "init.svc.wpa_supplicant";
 static const char SUPP_CONFIG_TEMPLATE[]= "/system/etc/wifi/wpa_supplicant.conf";
-static const char SUPP_CONFIG_FILE[]    = "/data/misc/wifi/wpa_supplicant.conf";
+static const char SUPP_CONFIG_FILE[]    = "/data/misc/wifi/bcm_supp.conf";
 static const char MODULE_FILE[]         = "/proc/modules";
 
 static int insmod(const char *filename, const char *args)
