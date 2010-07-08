@@ -35,6 +35,7 @@
 
 static struct wpa_ctrl *ctrl_conn;
 static struct wpa_ctrl *monitor_conn;
+static struct wpa_ctrl *check_conn;
 
 extern int do_dhcp();
 extern int ifc_init();
@@ -625,6 +626,19 @@ int wifi_connect_to_supplicant()
         snprintf(ifname, sizeof(ifname), "%s/%s", IFACE_DIR, iface);
     } else {
         strlcpy(ifname, iface, sizeof(ifname));
+    }
+
+// drakaz : wait for supplicant
+    int Cloop = 0;
+    while (1) {
+    	check_conn = wpa_ctrl_open(ifname);
+	if (check_conn != NULL) {
+		wpa_ctrl_close(check_conn);
+		check_conn = NULL;
+		break;
+	}
+	usleep(100000);
+	Cloop++;
     }
 
     ctrl_conn = wpa_ctrl_open(ifname);
