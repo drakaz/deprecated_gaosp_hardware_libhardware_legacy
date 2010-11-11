@@ -166,6 +166,8 @@ set_screen_state(int on)
     LOGI("*** set_screen_state %d", on);
 
     initialize_fds();
+    // drakaz : add a sleep to hide screen initialisation
+    usleep(500);
 
     //LOGI("go_to_sleep eventTime=%lld now=%lld g_error=%s\n", eventTime,
       //      systemTime(), strerror(g_error));
