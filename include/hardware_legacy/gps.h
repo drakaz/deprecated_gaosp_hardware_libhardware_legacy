@@ -214,7 +214,6 @@ typedef struct {
 
     /** Injects the current time. */
     int   (*inject_time)(GpsUtcTime time, int64_t timeReference,
-                         int uncertainty);
   
     /**
      * Specifies that the next call to start will not use the
