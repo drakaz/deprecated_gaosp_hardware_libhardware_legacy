@@ -504,15 +504,18 @@ int wifi_connect_to_supplicant()
 
 // drakaz : wait for supplicant
     int Cloop = 0;
-    while (1) {
+    while (Cloop < 5) {
     	check_conn = wpa_ctrl_open(ifname);
-	if (check_conn != NULL) {
-		wpa_ctrl_close(check_conn);
-		check_conn = NULL;
-		break;
-	}
-	usleep(100000);
-	Cloop++;
+      if (check_conn != NULL) {
+        wpa_ctrl_close(check_conn);
+        check_conn = NULL;
+        break;
+      } else {
+        LOGE("Unable to open connection to supplicant on \"%s\": %s",
+             ifname, strerror(errno));
+      }
+      sleep(1);
+      Cloop++;
     }
 
     ctrl_conn = wpa_ctrl_open(ifname);
