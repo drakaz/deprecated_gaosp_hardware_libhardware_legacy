@@ -51,18 +51,18 @@ static char iface[PROPERTY_VALUE_MAX];
 // sockets is in
 
 #ifndef WIFI_DRIVER_MODULE_PATH
-#define WIFI_DRIVER_MODULE_PATH         "/system/lib/modules/bcm4325.ko"
+#define WIFI_DRIVER_MODULE_PATH         "/system/lib/modules/wlan.ko"
 #endif
 #ifndef WIFI_DRIVER_MODULE_NAME
-#define WIFI_DRIVER_MODULE_NAME         "bcm4325"
+#define WIFI_DRIVER_MODULE_NAME         "wlan"
 #endif
 #ifndef WIFI_DRIVER_MODULE_ARG
-#define WIFI_DRIVER_MODULE_ARG          "firmware_path=/system/etc/rtecdc.bin nvram_path=/system/etc/nvram.txt"
+#define WIFI_DRIVER_MODULE_ARG          ""
 #endif
 #ifndef WIFI_FIRMWARE_LOADER
 #define WIFI_FIRMWARE_LOADER		""
 #endif
-#define WIFI_TEST_INTERFACE		"eth0"
+#define WIFI_TEST_INTERFACE		"sta"
 
 #define WIFI_DRIVER_LOADER_DELAY	1000000
 
